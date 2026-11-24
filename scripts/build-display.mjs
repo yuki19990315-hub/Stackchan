@@ -1,0 +1,12 @@
+import {spawnSync} from "node:child_process";
+import {existsSync} from "node:fs";
+import {fileURLToPath} from "node:url";
+import path from "node:path";
+const root=fileURLToPath(new URL("..",import.meta.url));
+const fw=path.join(root,"upstream/stack-chan/firmware");
+if (!existsSync(path.join(fw,"package.json"))) throw Error("Run git submodule update --init --recursive first");
+if (!process.env.MODDABLE) throw Error("Set up Moddable SDK first (see upstream firmware README)");
+const args=["scripts/run-mcconfig.mjs","-m","-p","esp32:"+path.join(root,"port/sanny"),"-t","build",path.join(root,"port/app/manifest.json")];
+const result=spawnSync(process.execPath,args,{cwd:fw,stdio:"inherit"});
+if(result.error) throw result.error;
+process.exit(result.status??1);

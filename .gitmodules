@@ -1,0 +1,3 @@
+[submodule "upstream/stack-chan"]
+	path = upstream/stack-chan
+	url = https://github.com/stack-chan/stack-chan.git

@@ -1,0 +1,15 @@
+{
+  "include": [
+    "../../upstream/stack-chan/firmware/host/app/manifest.json"
+  ],
+  "config": {
+    "driver": {
+      "type": "none",
+      "typeLocked": true
+    },
+    "enablePowerButton": false,
+    "virtualButton": false,
+    "touchIntervalMs": 40,
+    "touchReleaseDebounceMs": 60
+  }
+}

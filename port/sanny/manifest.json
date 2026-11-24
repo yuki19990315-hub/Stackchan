@@ -1,0 +1,67 @@
+{
+  "build": {
+    "SUBPLATFORM": "sanny",
+    "ESP32_SUBCLASS": "esp32s3",
+    "SDKCONFIGPATH": "./sdkconfig",
+    "USE_USB": "0"
+  },
+  "include": [
+    "$(MODULES)/drivers/gc9a01",
+    "$(MODULES)/drivers/sensors/qmi8658",
+    "$(IO)/digital",
+    "$(IO)/i2c",
+    "$(IO)/smbus",
+    "$(IO)/pwm"
+  ],
+  "modules": {
+    "setup/target": "./setup-target"
+  },
+  "preload": [
+    "setup/target"
+  ],
+  "config": {
+    "screen": "gc9a01",
+    "driver": {
+      "type": "none",
+      "typeLocked": true
+    },
+    "enablePowerButton": false,
+    "virtualButton": false,
+    "touchIntervalMs": 40,
+    "touchReleaseDebounceMs": 60
+  },
+  "creation": {
+    "static": 0,
+    "chunk": {
+      "initial": 131072,
+      "incremental": 0
+    },
+    "heap": {
+      "initial": 4608,
+      "incremental": 128
+    },
+    "stack": 768
+  },
+  "defines": {
+    "i2c": {
+      "sda_pin": 6,
+      "scl_pin": 7
+    },
+    "spi": {
+      "mosi_pin": 11,
+      "sck_pin": 10,
+      "miso_pin": -1
+    },
+    "ili9341": {
+      "width": 240,
+      "height": 240,
+      "hz": 40000000,
+      "cs_pin": 9,
+      "dc_pin": 8,
+      "rst_pin": 14,
+      "backlight_pin": 2,
+      "backlight_on": 1,
+      "spi_port": "SPI2_HOST"
+    }
+  }
+}

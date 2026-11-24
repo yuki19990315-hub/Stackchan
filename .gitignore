@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.env.*
+*.local.json
+*.bin
+*.elf
+sdkconfig.old

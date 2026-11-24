@@ -1,0 +1,46 @@
+{
+  "lcd": {
+    "width": 240,
+    "height": 240,
+    "sck": 10,
+    "mosi": 11,
+    "cs": 9,
+    "dc": 8,
+    "reset": 14,
+    "backlight": 2
+  },
+  "i2c": {
+    "sda": 6,
+    "scl": 7
+  },
+  "touch": {
+    "address": 21,
+    "reset": 13,
+    "interrupt": 5
+  },
+  "imu": {
+    "addressCandidates": [
+      107,
+      106
+    ]
+  },
+  "battery": {
+    "adc": 1
+  },
+  "i2s": {
+    "bclk": 15,
+    "ws": 16,
+    "micData": 17,
+    "speakerData": 18,
+    "enabled": false
+  },
+  "servo": {
+    "enabled": false,
+    "pins": [
+      21,
+      33
+    ]
+  },
+  "flashMiB": 16,
+  "psramMiB": 2
+}
