@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "build": "node scripts/build-display.mjs"
+    "build": "node scripts/build-display.mjs",
+    "build:face": "node scripts/build-display.mjs --face",
+    "build:host": "node scripts/build-display.mjs --host"
   }
 }

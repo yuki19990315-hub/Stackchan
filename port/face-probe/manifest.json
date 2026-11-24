@@ -1,0 +1,15 @@
+{
+  "include": [
+    "../../upstream/stack-chan/firmware/host/modules/ui/manifest.json"
+  ],
+  "modules": {
+    "main": "./main"
+  },
+  "creation": {
+    "stack": 1024
+  },
+  "config": {
+    "corner": 120,
+    "touchCount": 1
+  }
+}

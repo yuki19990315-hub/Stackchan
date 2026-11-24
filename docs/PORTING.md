@@ -27,3 +27,6 @@ SDK: https://github.com/Moddable-OpenSource/moddable
 
 ## 追加検証
 Rev3回路図ではGPIO5がTP_INTとオプションのMOSFET回路に接続される。GPIO5は予約済みとし、駆動せずタッチはポーリング。CST816Sの不正サンプルを無視する。音声の標準SDKドライバーはそれぞれI2Sクロックを所有するため、共通クロックのフルデュプレックス診断は独立したネイティブI2Sにする。`node --test tests/*.test.mjs` でホストテスト。正式な上流ビルド、円形UI、音声ブリッジ、実機確認は未完了。Rev3回路図のP2コネクタ7=GPIO15、8=GPIO16、9=GPIO17、10=GPIO18、11=GPIO21、12=GPIO33、6=3V3、1/5=GND、2=VSYS。現物の基板リビジョンと向き・電源は要確認。USB給電中にVSYS/3V3へ外部電源を入力しない。出典: https://files.waveshare.com/wiki/ESP32-S3-Touch-LCD-1.28/ESP32-S3-Touch-LCD-1.28-Sch.pdf
+
+## 表情の独立テスト
+`npm run build:face` は本家SimpleFace、FaceBehavior（瞬き・呼吸・視線）をそのまま利用し、左20・上60に配置する円形液晶向けの診断アプリ。タッチで通常と喜びを切替える。音声・モーター・ネットなし。`npm run build:host` は全体ホストのビルド試行用で、音声GPIOを安全に統合するまで実機書き込み禁止。どちらもビルド未実行。SDKは上流CIの指定10.1.0を使用する。`bash scripts/test-host.sh` でJSとPCMのPCテストを実行。
