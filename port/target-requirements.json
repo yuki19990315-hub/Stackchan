@@ -1,0 +1,78 @@
+{
+  "target": "sanny",
+  "upstream": {
+    "repository": "stack-chan/stack-chan",
+    "release": "v2.1.0",
+    "commit": "b050a44592ab847f0f4c2ceb6eb350a02bcb609a",
+    "sdk": "10.1.0",
+    "hostApi": 2
+  },
+  "goal": "unofficial additional hardware target; preserve upstream behavior and APIs",
+  "required": [
+    "boot-and-setup",
+    "face-and-animation",
+    "touch-and-gestures",
+    "imu",
+    "audio-input-output",
+    "tts-and-lip-sync",
+    "wifi-and-offline",
+    "ble-preferences",
+    "realtime-conversation",
+    "mod-runtime-and-installation",
+    "web-tool-compatibility",
+    "battery-status",
+    "safe-update-and-recovery",
+    "long-running-stability"
+  ],
+  "deferred": {
+    "servo": {
+      "enabled": false,
+      "reason": "not installed; retain motion API using upstream none driver"
+    },
+    "camera": {
+      "enabled": false,
+      "reason": "USB camera owned, connection and UVC compatibility unverified"
+    },
+    "externalHeadTouch": {
+      "enabled": false,
+      "reason": "dedicated touch hardware not confirmed; screen gesture adaptation required"
+    },
+    "externalLed": {
+      "enabled": false,
+      "reason": "head LED hardware not confirmed"
+    },
+    "sdCard": {
+      "enabled": false,
+      "reason": "board storage interface and peripherals not confirmed"
+    }
+  },
+  "hardware": {
+    "flashMiB": 16,
+    "psramMiB": 2,
+    "display": {
+      "width": 240,
+      "height": 240,
+      "sck": 10,
+      "mosi": 11,
+      "cs": 9,
+      "dc": 8,
+      "reset": 14,
+      "backlight": 2
+    },
+    "servoEnabled": false,
+    "cameraEnabled": false
+  },
+  "rules": [
+    "do not replace upstream features with lookalikes",
+    "preserve upstream sources as a pinned submodule",
+    "limit changes to target, hardware adapters, capability gating, and round-screen layout",
+    "do not advertise unsupported capabilities",
+    "no automatic microphone streaming or flash",
+    "do not publish releases or submit upstream changes"
+  ],
+  "acceptance": {
+    "firmwareBuild": "not-run",
+    "deviceTest": "not-run",
+    "officialRecognition": false
+  }
+}
