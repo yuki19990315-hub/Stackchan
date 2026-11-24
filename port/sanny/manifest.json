@@ -10,11 +10,11 @@
     "$(MODULES)/drivers/sensors/qmi8658",
     "$(IO)/digital",
     "$(IO)/i2c",
-    "$(IO)/smbus",
     "$(IO)/pwm"
   ],
   "modules": {
-    "setup/target": "./setup-target"
+    "setup/target": "./setup-target",
+    "sanny-touch-decode": "./touch-decode.mjs"
   },
   "preload": [
     "setup/target"
@@ -28,7 +28,9 @@
     "enablePowerButton": false,
     "virtualButton": false,
     "touchIntervalMs": 40,
-    "touchReleaseDebounceMs": 60
+    "touchReleaseDebounceMs": 60,
+    "corner": 120,
+    "touchCount": 1
   },
   "creation": {
     "static": 0,
@@ -61,7 +63,7 @@
       "rst_pin": 14,
       "backlight_pin": 2,
       "backlight_on": 1,
-      "spi_port": "SPI2_HOST"
+      "spi_port": 1
     }
   }
 }

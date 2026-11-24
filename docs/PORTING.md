@@ -4,10 +4,10 @@
 これはファームウェア移植の初期段階であり、ビルド可能性・実機動作はまだ確認していない。
 
 - 液晶: Moddable GC9A01ドライバー、SPI GPIO10/11、CS9 DC8 RST14 BL2、240x240。
-- タッチ: CST816S (0x15)、I2C GPIO6/7、RST13 INT5。ポーリング方式の暫定provider。
+- タッチ: CST816S (0x15)、I2C GPIO6/7、RST13、割り込みピン未確定。ポーリング方式の暫定provider。
 - IMU: SDK QMI8658ドライバー、0x6B/0x6A候補。実機の向き・単位を要確認。
 - ESP32-S3R2: 16 MiB Flash / 2 MiB PSRAM (quad)。SDKとパーティション適合を確認する。
-- 音声: INMP441とMAX98357A。GPIO15 BCLK/16 WS を共有、17入力・18出力の候補。I2Sフルデュプレックスではサンプルレートとスロット幅を揃える必要がある。24-bitマイクを32-bitスロットで取得し、PCM変換を検証する。既存M5Stack用コーデック設定を流用しない。未実装・配線未確認。
+- 音声: INMP441とMAX98357A。独立ESP-IDF診断を diagnostics/audio に追加（未ビルド）。GPIO15 BCLK/16 WS を共有、17入力・18出力の候補。I2Sフルデュプレックスではサンプルレートとスロット幅を揃える必要がある。24-bitマイクを32-bitスロットで取得し、PCM変換を検証する。既存M5Stack用コーデック設定を流用しない。未実装・配線未確認。
 - MAX98357A電源は供給電流とスピーカー定格確認後に決定。スピーカー出力のマイナスをGNDに接続しない。
 - カメラ/サーボは未接続。サーボdriver none。
 - AI: 本家の通常クラウド会話処理を優先。CoreS3専用WebRTC依存部は2 MiBで検証するまで有効化しない。Grok追加は未実装。
@@ -24,3 +24,6 @@
 参考: https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.28
 上流: https://github.com/stack-chan/stack-chan/tree/v2.1.0
 SDK: https://github.com/Moddable-OpenSource/moddable
+
+## 追加検証
+GPIO5はメーカー資料上MOSFET制御にも関係するため、タッチ割り込みに割り当てない。タッチはポーリング。CST816Sの不正サンプルを無視する。音声の標準SDKドライバーはそれぞれI2Sクロックを所有するため、共通クロックのフルデュプレックス診断は独立したネイティブI2Sにする。`node --test tests/*.test.mjs` でホストテスト。正式な上流ビルド、円形UI、音声ブリッジ、実機確認は未完了。音声用ピンは現物コネクタ確認まで確定ではない。
