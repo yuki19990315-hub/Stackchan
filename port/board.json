@@ -16,7 +16,8 @@
   "touch": {
     "address": 21,
     "reset": 13,
-    "interrupt": null
+    "interrupt": 5,
+    "useInterrupt": false
   },
   "imu": {
     "addressCandidates": [
@@ -33,7 +34,7 @@
     "micData": 17,
     "speakerData": 18,
     "enabled": false,
-    "status": "candidate-unverified-connector"
+    "status": "rev3-schematic-confirmed-physical-connector-unverified"
   },
   "servo": {
     "enabled": false,
@@ -41,7 +42,7 @@
       21,
       33
     ],
-    "status": "unverified-reserved-candidates"
+    "status": "rev3-schematic-confirmed-physical-connector-unverified"
   },
   "flashMiB": 16,
   "psramMiB": 2

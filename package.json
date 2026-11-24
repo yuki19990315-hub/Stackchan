@@ -1,0 +1,9 @@
+{
+  "name": "sanny-stackchan-port",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/build-display.mjs"
+  }
+}

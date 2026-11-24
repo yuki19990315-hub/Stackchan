@@ -14,7 +14,7 @@
   ],
   "modules": {
     "setup/target": "./setup-target",
-    "sanny-touch-decode": "./touch-decode.mjs"
+    "sanny-touch-decode": "./touch-decode"
   },
   "preload": [
     "setup/target"

@@ -11,7 +11,7 @@ assert.equal(m.defines.i2c.sda_pin,b.i2c.sda);
 assert.equal(m.defines.i2c.scl_pin,b.i2c.scl);
 });
 test("no pin collisions",()=>{
-const pins=[b.lcd.sck,b.lcd.mosi,b.lcd.cs,b.lcd.dc,b.lcd.reset,b.lcd.backlight,b.i2c.sda,b.i2c.scl,b.touch.reset,b.battery.adc,b.i2s.bclk,b.i2s.ws,b.i2s.micData,b.i2s.speakerData,...b.servo.pins];
+const pins=[b.lcd.sck,b.lcd.mosi,b.lcd.cs,b.lcd.dc,b.lcd.reset,b.lcd.backlight,b.i2c.sda,b.i2c.scl,b.touch.reset,b.touch.interrupt,b.battery.adc,b.i2s.bclk,b.i2s.ws,b.i2s.micData,b.i2s.speakerData,...b.servo.pins];
 assert.equal(new Set(pins).size,pins.length);
 });
 test("safe first pass",()=>{
