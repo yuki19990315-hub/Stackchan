@@ -6,3 +6,7 @@ dist/
 *.bin
 *.elf
 sdkconfig.old
+
+*.bin.partial
+*.bin.json
+backups/

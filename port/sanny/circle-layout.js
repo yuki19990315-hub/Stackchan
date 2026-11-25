@@ -4,7 +4,8 @@ export function circleSpan(y, margin=4) {
   const r=120-margin,dy=y-119.5;
   if(Math.abs(dy)>r)return null;
   const dx=Math.sqrt(r*r-dy*dy);
-  return {left:Math.ceil(119.5-dx),right:Math.floor(119.5+dx)};
+  const left=Math.ceil(119.5-dx),right=Math.floor(119.5+dx);
+  return left<=right?{left,right}:null;
 }
 export function safeRect(left,top,width,height,margin=4){
   if(![left,top,width,height].every(Number.isInteger)||width<=0||height<=0)return false;
